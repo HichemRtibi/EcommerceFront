@@ -7,22 +7,24 @@ import {CatalogueService} from './services/catalogue.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  categories;
+  private categories;
 
   constructor(private catservice: CatalogueService) {
 
   }
 
   ngOnInit() {
+    this.getCategories();
   }
 
   title = 'EcommerceFront';
 
   private getCategories() {
-    this.catservice.getResources('/categories').subscribe(data => {
-      this.categories = data
-    }, error1 => {
-      console.log(error1)
-    })
+    this.catservice.getResources()
+      .subscribe(data=>{
+        this.categories=data;
+      },error1 => {
+        console.log(error1)
+      })
   }
 }
