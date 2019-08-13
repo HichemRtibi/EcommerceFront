@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CatalogueService} from './services/catalogue.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {CatalogueService} from './services/catalogue.service';
 export class AppComponent implements OnInit {
   private categories;
 
-  constructor(private catservice: CatalogueService) {
+  constructor(private catservice: CatalogueService, private route: Router) {
 
   }
 
@@ -20,11 +21,16 @@ export class AppComponent implements OnInit {
   title = 'EcommerceFront';
 
   private getCategories() {
-    this.catservice.getResources("/categories")
-      .subscribe(data=>{
-        this.categories=data;
-      },error1 => {
+    this.catservice.getResources('/categories')
+      .subscribe(data => {
+        this.categories = data;
+      }, error1 => {
         console.log(error1)
       })
+  }
+
+  getProductByCat(c) {
+    this.route.navigateByUrl('/products/2/'+c.id);
+
   }
 }

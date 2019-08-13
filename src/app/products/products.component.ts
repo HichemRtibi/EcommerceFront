@@ -13,12 +13,20 @@ export class ProductsComponent implements OnInit {
   constructor(private catalogueservices:CatalogueService,private route:ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
-    this.getProducts();
+    let p1=this.route.snapshot.params.p1;
+    if(p1==1){
+      this.getProducts("/products/search/selectedProducts");
+    }else if(p1==2)
+    {
+      let idCat=this.route.snapshot.params.p1;
+      this.getProducts("/categories/"+idCat+"/products");
+    }
+
+
   }
-  getProducts()
+  getProducts(url)
   {
-    this.catalogueservices.getResources("/products/search/selectedProducts").subscribe(data=>{
+    this.catalogueservices.getResources(url).subscribe(data=>{
       this.prodcuts=data;
       },error1 => {
       console.log(error1)
