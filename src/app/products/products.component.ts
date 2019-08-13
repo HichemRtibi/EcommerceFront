@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CatalogueService} from '../services/catalogue.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,9 +10,10 @@ import {CatalogueService} from '../services/catalogue.service';
 export class ProductsComponent implements OnInit {
   private prodcuts;
 
-  constructor(private catalogueservices:CatalogueService) { }
+  constructor(private catalogueservices:CatalogueService,private route:ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.params.id);
     this.getProducts();
   }
   getProducts()
