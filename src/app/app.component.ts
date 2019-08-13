@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   title = 'EcommerceFront';
 
   private getCategories() {
-    this.catservice.getResources()
+    this.catservice.getResources("/categories")
       .subscribe(data=>{
         this.categories=data;
       },error1 => {
