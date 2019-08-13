@@ -35,4 +35,9 @@ export class AppComponent implements OnInit {
     this.route.navigateByUrl('/products/2/'+c.id);
 
   }
+  onselectProduct()
+  {
+    this.currentCategories=undefined;
+    this.route.navigateByUrl('/products/1/0')
+  }
 }
