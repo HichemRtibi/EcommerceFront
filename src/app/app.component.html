@@ -21,9 +21,9 @@
 </nav>
 <div class="container">
   <div class="col-md-3">
-<ul class="list-group" *ngIf="categories">
-  <li class="list-group-item" *ngFor="let c of categories._embedded.categories">
-    <a (click)="getProductByCat(c)">{{c.name}}</a>
+<ul [ngClass]="currentCategories==c?'active' : ''" class="list-group" *ngIf="categories">
+  <li  (click)="getProductByCat(c)" class="list-group-item clickable" *ngFor="let c of categories._embedded.categories">
+    {{c.name}}
   </li>
 </ul>
 
