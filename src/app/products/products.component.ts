@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   constructor(private catalogueservices:CatalogueService) { }
 
   ngOnInit() {
+    this.getProducts();
   }
   getProducts()
   {
